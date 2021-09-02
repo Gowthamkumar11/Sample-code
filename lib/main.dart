@@ -1,4 +1,7 @@
+import 'package:checking_app/data/configuration.dart';
+import 'package:checking_app/pages/review_page.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,25 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 2,
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          onTap: onTabTapped,
-          currentIndex: _currentIndex,
-          items: [
-            BottomNavigationBarItem(icon: new Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Discover',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.grid_view_rounded), label: 'Library')
-          ],
-        ),
-        body: _children[_currentIndex]);
+    return Scaffold(body: _children[_currentIndex]);
   }
 }
 
@@ -75,10 +60,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: grey200,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.grey[200],
+        backgroundColor: grey200,
       ),
       body: Center(
         child: Container(
@@ -88,149 +73,8 @@ class _HomePageState extends State<HomePage> {
                 builder: (context) => ReviewPage(),
               ));
             },
-            child: Text('Next Page'),
+            child: Text('Click to View Pages'),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class ReviewPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.grey[200],
-        toolbarHeight: 35,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 30,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 5, color: Colors.white),
-                      color: Color(0xffc0c2cf),
-                      borderRadius: BorderRadius.circular(5)),
-                  height: 220,
-                  width: MediaQuery.of(context).size.width / 2.7,
-                  child: Text(''),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 220,
-                  width: MediaQuery.of(context).size.width / 1.9,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Desvendando Princesas',
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      Text(
-                        'By Flower Books',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      SizedBox(
-                        height: 65,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'Episodes',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xffc0c2cf),
-                                  ),
-                                ),
-                                Text(
-                                  '22',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  'View count',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xffc0c2cf),
-                                  ),
-                                ),
-                                Text(
-                                  '200',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  'Rating',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xffc0c2cf),
-                                  ),
-                                ),
-                                Text(
-                                  '4.0',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.favorite_rounded),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            Icon(Icons.share)
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
         ),
       ),
     );

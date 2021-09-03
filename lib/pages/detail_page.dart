@@ -147,10 +147,10 @@ class _DetailPageState extends State<DetailPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            FontAwesomeIcons.gratipay,
-                            color: Colors.red[300],
-                          ),
+                          // Icon(
+                          //   FontAwesomeIcons.gratipay,
+                          //   color: Colors.red[300],
+                          // ),
                           SizedBox(
                             width: 150,
                           ),

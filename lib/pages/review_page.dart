@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:checking_app/data/configuration.dart';
 import 'package:checking_app/pages/episode_page.dart';
+import 'package:epub_viewer/epub_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -217,7 +220,28 @@ class _ReviewPageState extends State<ReviewPage> {
                       thickness: 0.5,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        EpubViewer.setConfig(
+                          themeColor: Theme.of(context).primaryColor,
+                          identifier: "Book",
+                          scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+                          allowSharing: true,
+                          enableTts: true,
+                        );
+
+                        await EpubViewer.openAsset(
+                          'assets/flutter-succinctly.epub',
+                        );
+                        // get current locator
+                        EpubViewer.locatorStream.listen((locator) {
+                          print(
+                              'LOCATOR: ${EpubLocator.fromJson(jsonDecode(locator))}');
+                        });
+
+                        // Navigator.of(context).push(
+                        //     MaterialPageRoute(builder: (context) => Reader())
+                        //     );
+                      },
                       child: CustomGoogleFont(
                         text: 'Reviews',
                         size: 16,
